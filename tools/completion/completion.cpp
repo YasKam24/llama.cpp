@@ -85,6 +85,12 @@ static void sigint_handler(int signo) {
 #endif
 
 int main(int argc, char ** argv) {
+    auto start_main = std::chrono::high_resolution_clock::now();
+    long long start_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(
+        start_main.time_since_epoch()).count();
+
+    LOG_INF("[TIMING] Initialization begins : %lld ns\n", start_ns);
+
     std::setlocale(LC_NUMERIC, "C");
 
     common_params params;
